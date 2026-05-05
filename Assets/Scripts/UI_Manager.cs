@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public GameObject winText;
     public GameObject nextLevelButton;
     public Button replayButton;
+    public TextMeshProUGUI levelText;
 
     private GridManager gridManager;
 
@@ -19,6 +20,8 @@ public class UIManager : MonoBehaviour
 
         winText.SetActive(false);
         nextLevelButton.SetActive(false);
+        
+        levelText.text = "Level " + (gridManager.currentLevelIndex + 1);
     }
 
     public void OnLevelComplete()
@@ -32,6 +35,7 @@ public class UIManager : MonoBehaviour
         if (gridManager != null)
         {
             gridManager.LoadNextLevel();
+            levelText.text = "Level " + (gridManager.currentLevelIndex + 1);
         }
 
         winText.SetActive(false);
